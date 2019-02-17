@@ -14,11 +14,16 @@ class CalcController {
 
     //Método principal
     initialize(){
+        this.setDisplayDateTime();
         //Atualizando data e hora a cada segundo
         setInterval(() => {
-            this.displayDate = this.currentDate.toLocaleDateString(this._locale);
-            this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
+            this.setDisplayDateTime();
         }, 1000)
+    }
+
+    setDisplayDateTime(){
+        this.displayDate = this.currentDate.toLocaleDateString(this._locale, {day: '2-digit', month: 'short', year: 'numeric'});
+        this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
     }
 
     //Método que retorna o valor da hora
