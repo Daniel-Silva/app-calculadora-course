@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Calculadora Hcode</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/main.css";
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="outer">
         <div class="middle">
+            
             <svg version="1.1" id="calculadora" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
 	 x="0px" y="0px" width="600px" height="600px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
@@ -173,29 +175,69 @@
                             </g>
                         </g>
                         <g id="buttons">
-                            <rect id="btn-ac_1_" x="148" y="261" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-ce_1_" x="224" y="261" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-porcento_1_" x="300" y="261" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-divisao_1_" x="376" y="261" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-7_1_" x="148" y="320" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-8_1_" x="224" y="320" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-9_1_" x="300" y="320" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-multiplicacao_1_" x="376" y="320" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-4_1_" x="148" y="378" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-5_1_" x="224" y="378" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-6_1_" x="300" y="378" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-subtracao_1_" x="376" y="378" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-1_1_" x="148" y="436" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-2_1_" x="224" y="436" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-3_1_" x="300" y="436" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-_x2B_" x="376" y="436" fill="#FFFFFF" width="76" height="58"/>
-                            <path id="btn-00_1_" fill="#FFFFFF" d="M224,494v58h-62.96c-6.65,0-13.04-6.39-13.04-13.05V494H224z"/>
-                            <rect id="btn-0_1_" x="224" y="494" fill="#FFFFFF" width="76" height="58"/>
-                            <rect id="btn-ponto_1_" x="300" y="494" fill="#FFFFFF" width="76" height="58"/>
-                            <path id="btn-igual_1_" fill="#FFFFFF" d="M452,494v48.61c-1.41,5.02-5.65,9.39-11.04,9.39H376v-58H452z"/>
+                            <g class="btn-ac">
+                                <rect x="148" y="261" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-ce">
+                                <rect x="224" y="261" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-porcento">
+                                <rect x="300" y="261" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-divisao">
+                                <rect x="376" y="261" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-7">
+                                <rect x="148" y="320" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-8">
+                                <rect x="224" y="320" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-9">
+                                <rect x="300" y="320" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-multiplicacao">
+                                <rect x="376" y="320" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-4">
+                                <rect x="148" y="378" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-5">
+                                <rect x="224" y="378" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-6">
+                                <rect x="300" y="378" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-subtracao">
+                                <rect x="376" y="378" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-1">
+                                <rect x="148" y="436" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-2">
+                                <rect x="224" y="436" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-3">
+                                <rect x="300" y="436" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-soma">
+                                <rect x="376" y="436" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-00">
+                                <path fill="#FFFFFF" d="M224,494v58h-62.96c-6.65,0-13.04-6.39-13.04-13.05V494H224z"/>
+                            </g>
+                            <g class="btn-0">
+                                <rect x="224" y="494" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-ponto">
+                                <rect x="300" y="494" fill="#FFFFFF" width="76" height="58"/>
+                            </g>
+                            <g class="btn-igual">
+                                <path fill="#FFFFFF" d="M452,494v48.61c-1.41,5.02-5.65,9.39-11.04,9.39H376v-58H452z"/>
+                            </g>
                         </g>
                         <g id="parts">
-                            <g id="btn-igual">
+                            <g class="btn-igual">
                                 <g id="circulo">
 
                                         <image overflow="visible" opacity="0.15"  a:adobe-blending-mode="multiply"  a:adobe-opacity-share="1" width="115" height="115" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHUAAAB1CAYAAABwBK68AAAACXBIWXMAABcRAAAXEQHKJvM/AAAA
@@ -270,67 +312,82 @@
 
                                     <text id="igual" transform="matrix(1 0 0 1 410.5936 526.7719)" fill="#FFFFFF" font-family="'OpenSans-SemiBold'" font-size="16">=</text>
                             </g>
-                            <text id="btn-ce" transform="matrix(1 0 0 1 253.5335 295.5038)" font-family="'AgencyFB-Reg'" font-size="20">CE</text>
-                            <text id="btn-ac" transform="matrix(1 0 0 1 176.6892 295.5034)" font-family="'AgencyFB-Reg'" font-size="20">AC</text>
-                            <text id="btn-porcento" transform="matrix(1 0 0 1 332.1302 295.5031)" font-family="'AgencyFB-Reg'" font-size="20">%</text>
-                            <g id="btn-divisao">
+                            <g class="btn-ce">
+                                <text  transform="matrix(1 0 0 1 253.5335 295.5038)" font-family="'AgencyFB-Reg'" font-size="20">CE</text>
+                            </g>
+                            <g class="btn-ac">
+                                <text transform="matrix(1 0 0 1 176.6892 295.5034)" font-family="'AgencyFB-Reg'" font-size="20">AC</text>                            
+                            </g>
+                            <g class="btn-porcento">
+                                <text transform="matrix(1 0 0 1 332.1302 295.5031)" font-family="'AgencyFB-Reg'" font-size="20">%</text>
+                            </g>                            
+                            <g class="btn-divisao">
                                 <text transform="matrix(1 0 0 1 412.5936 295.5035)" fill="#FF6F6F" font-family="'AgencyFB-Reg'" font-size="20">/</text>
                             </g>
-                            <g id="btn-multiplicacao">
+                            <g class="btn-multiplicacao">
                                 <text transform="matrix(1 0 0 1 411.5936 353)" fill="#FF6F6F" font-family="'AgencyFB-Reg'" font-size="20">*</text>
                             </g>
-                            <g id="btn-subtracao">
+                            <g class="btn-subtracao">
                                 <text transform="matrix(1 0 0 1 412.5936 410.5)" fill="#FF6F6F" font-family="'AgencyFB-Reg'" font-size="20">-</text>
                             </g>
-                            <g id="btn-soma">
+                            <g class="btn-soma">
                                 <text transform="matrix(1 0 0 1 410.5936 469)" fill="#FF6F6F" font-family="'AgencyFB-Reg'" font-size="20">+</text>
                             </g>
-                            <g id="btn-ponto">
+                            <g class="btn-ponto">
                                 <text transform="matrix(1 0 0 1 338 526.7719)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="20">,</text>
                             </g>
-                            <g id="btn-9">
+                            <g class="btn-9">
                                 <text transform="matrix(1 0 0 1 332.1302 355)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">9</text>
                             </g>
-                            <g id="btn-8">
+                            <g class="btn-8">
                                 <text transform="matrix(1 0 0 1 256.5 355)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">8</text>
                             </g>
-                            <g id="btn-7">
+                            <g class="btn-7">
                                 <text transform="matrix(1 0 0 1 180 355)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">7</text>
                             </g>
-                            <g id="btn-6">
+                            <g class="btn-6">
                                 <text transform="matrix(1 0 0 1 332.1302 412.5)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">6</text>
                             </g>
-                            <g id="btn-5">
+                            <g class="btn-5">
                                 <text transform="matrix(1 0 0 1 256.5 412.5)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">5</text>
                             </g>
-                            <g id="btn-4">
+                            <g class="btn-4">
                                 <text transform="matrix(1 0 0 1 180 412.5)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">4</text>
                             </g>
-                            <g id="btn-3">
+                            <g class="btn-3">
                                 <text transform="matrix(1 0 0 1 332.1302 471)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">3</text>
                             </g>
-                            <g id="btn-2">
+                            <g class="btn-2">
                                 <text transform="matrix(1 0 0 1 256.5 471)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">2</text>
                             </g>
-                            <g id="btn-1">
+                            <g class="btn-1">
                                 <text transform="matrix(1 0 0 1 180 471)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">1</text>
                             </g>
-                            <g id="btn-0">
+                            <g class="btn-0">
                                 <text transform="matrix(1 0 0 1 256.5 528.7719)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">0</text>
                             </g>
-                            <g id="btn-00">
+                            <g class="btn-00">
                                 <text transform="matrix(1 0 0 1 174 528.7719)" fill="#BEBEBE" font-family="'AgencyFB-Reg'" font-size="27">00</text>
                             </g>
                         </g>
                         <g id="base">
-                            <path id="display" fill="#FFFFFF" stroke="#F7F7F7" stroke-miterlimit="10" d="M453,64v195.92c-1.525,0.69-3.221,1.08-5.017,1.08
+                            <g class="display">
+                                <path fill="#FFFFFF" stroke="#F7F7F7" stroke-miterlimit="10" d="M453,64v195.92c-1.525,0.69-3.221,1.08-5.017,1.08
                                 h-297.98c-0.341,0-0.672-0.01-1.003-0.04V64c0-6.63,5.388-12,12.04-12H440.96C447.612,52,453,57.37,453,64z"/>
-                            <g id="number">
+                            </g>
+                            <g class="number">
                                 <text transform="matrix(1 0 0 1 402 228)" fill="#4E4E4E" font-family="'AgencyFB-Reg'" font-size="60">0</text>
+                            </g>
+                            <g class="hora">
+                                <text transform="matrix(1 0 0 1 290.874 73)" font-family="'AgencyFB-Reg'" font-size="10">06:52</text>
+                            </g>
+                            <g class="data">
+                                <text transform="matrix(1 0 0 1 391.5 73)" font-family="'AgencyFB-Reg'" font-size="10">17/02/2019</text>
                             </g>
                         </g>
                     </g>
                 </switch>
+
             </svg>
 
         </div>
