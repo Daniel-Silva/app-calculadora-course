@@ -34,7 +34,7 @@ button,
 
         hr {
             box-sizing: content-box;
-            height: 0
+            height: 0;
         }
 
         code,
@@ -182,11 +182,11 @@ button,
         }
 
          @font-face {
-            font-family: 'Digital-7';
-            src: url('digital-7.ttf');
+            font-family: 'ZCOOLQingKeHuangYou';
+            src: url(../font/ZCOOLQingKeHuangYou-Regular.ttf);
         }
         svg{
-            font-family: 'Digital-7', sans-serif;
+            font-family: 'ZCOOLQingKeHuangYou', sans-serif;
         }
 
         #calculadora-hcode {
