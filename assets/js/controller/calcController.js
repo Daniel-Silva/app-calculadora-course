@@ -3,6 +3,8 @@ class CalcController {
     //Método construtor da classe
     constructor(){
         //Atributos da classe CalcController
+        this._audio = new Audio('assets/mp3/click.mp3')
+        this._audioOnOff = false;
         this._lastOperator = '';
         this._lastNumber = '';
         this._operation = [];
@@ -14,6 +16,7 @@ class CalcController {
         //Executando os principais métodos da classe
         this.initialize();
         this.initButtonEvents();
+        this.initKeyboar();
     }
 
     //Método principal
@@ -23,7 +26,65 @@ class CalcController {
         setInterval(() => {
             this.setDisplayDateTime();
         }, 1000);
-        this.setLastNumberToDisplay()
+        this.setLastNumberToDisplay();
+        document.querySelectorAll('.btn-ac').forEach(btn =>{
+            btn.addEventListener('dblclick', e =>{
+                this.toggleAudio();
+            })
+        })
+    }
+
+    toggleAudio() {
+        this._audioOnOff = !this._audioOnOff;
+    }
+
+    playAudio(){
+        if(this._audioOnOff){
+            this._audio.currentTime = 0;
+            this._audio.play();
+        }
+    }
+
+    initKeyboar(){
+        document.addEventListener('keyup', e =>{
+            this.playAudio();
+            console.log(e.key);
+            switch(e.key){
+                case 'Escape':
+                    this.clearAll();
+                    break;
+                case 'Backspace':
+                    this.clearEntry();
+                    break;
+                case '+':
+                case '-':
+                case '/':
+                case '*':
+                case '%':
+                    this.addOperation(e.key);
+                    break;
+                case ',':
+                case '.':
+                    this.addDot();
+                    break;
+                case 'Enter':
+                case '=':
+                    this.calc();
+                    break;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    this.addOperation(parseInt(e.key));
+                    break;
+            }
+        })
     }
 
     //Método que adiciona multiplos eventos aos buttons
@@ -208,6 +269,7 @@ class CalcController {
 
     //Método para verificar a função de cada button
     execBtn(value){
+        this.playAudio();
         switch(value){
             case 'ac':
                 this.clearAll();
