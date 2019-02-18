@@ -3,6 +3,8 @@ class CalcController {
     //Método construtor da classe
     constructor(){
         //Atributos da classe CalcController
+        this._lastOperator = '';
+        this._lastNumber = '';
         this._operation = [];
         this._locale = 'pt-BR';
         this._displayCalcEl = document.querySelector("#display");
@@ -20,7 +22,8 @@ class CalcController {
         //Método para atualizar a data e hora a cada segundo
         setInterval(() => {
             this.setDisplayDateTime();
-        }, 1000)
+        }, 1000);
+        this.setLastNumberToDisplay()
     }
 
     //Método que adiciona multiplos eventos aos buttons
@@ -38,11 +41,13 @@ class CalcController {
     //Método que limpa o display caso o button clicado seja AC
     clearAll(value){
         this._operation = [];
+        this.setLastNumberToDisplay();
     }
 
     //Método que limpa a ultima entrada do display caso o button clicado seja ce
     clearEntry(){
-        this._operation.pop()
+        this._operation.pop();
+        this.setLastNumberToDisplay();
     }
 
     //Método que retorna a ultima operação
@@ -66,16 +71,45 @@ class CalcController {
             this.calc();
         }
     }
-
-    //Método para realizar o primeiro cálculo
-    calc(){
-        //Remove o ultimo value do array
+    
+    //Método que retorna o resultado o cálculo depois de executar o eval()
+    getResult(){
         //Join() separa o array e retorna uma string
         //Eval() retorna o cálculo da string
+        return eval(this._operation.join(''));
+    }
+    //Método para realizar o primeiro cálculo
+    calc(){        
+        //Verifica se _operator é maior que 3
+        //Se sim, remove o ultimo resultado do array _operator
+        //Adiciona o valor (item) retornado do método getLastItem ao atributo _lastOperator
+        //Adiciona o resultado retornado do método getResult ao atributo _lastNumber
+        let last = '';
+        this._lastOperator = this.getLastItem(true);
+
+        if(this._operation.length < 3) {
+            let firstItem = this._operation[0];
+            this._operation = [firstItem, this._lastOperator, this._lastNumber];
+        }
+
+        if(this._operation.length > 3){
+            last = this._operation.pop();
+            this._lastNumber = this.getResult() ;   
+        } else if(this._operation.length == 3) {
+            this._lastNumber = this.getLastItem(false) ;
+        }
+        //Verifica se o operador é o % e executa a regra de calculo do mesmo
+        let result = this.getResult();
+        if(last == '%'){
+           result /= 100;
+           this._operation = [result];
+        } else {
+            this._operation = [result];
+            if(last){
+                this._operation.push(last);
+            }
+        }
         //Atualiza o display com o resultado do cálculo
-        let last = this._operation.pop();
-        let result = eval(this._operation.join(''));
-        this._operation = [result, last];
         this.setLastNumberToDisplay();
     }
 
@@ -84,18 +118,34 @@ class CalcController {
         this._operation[this._operation.length - 1] = value
     }
 
-    //Método para adicionar o ultimo valor no display
-    setLastNumberToDisplay(){
+    //Método para pegar o ultimo item da operação
+    getLastItem(isOperator = true){
         //Percorre o array _operation até a ultima posição
-        //Adiciona a ultima posição encontrada na variável lastNumber
+        //Adiciona a ultima posição encontrada na variável lastItem
         //Para a execução do for()
-        //Adiciona a variável lastNumber no display
-        let lastNumber;
+        //Retorna a variável lastItem
+        let lastItem;
         for(let i = this._operation.length - 1; i >= 0; i--){
-            if(!this.isOperator(this._operation[i])){
-                lastNumber = this._operation[i];
+            
+            if(this.isOperator(this._operation[i]) == isOperator){
+                lastItem = this._operation[i];
                 break
             }
+            
+        }
+        if(!lastItem){
+            lastItem = (isOperator) ? this._lastOperator : this._lastNumber;
+        }
+        return lastItem
+    }
+    //Método para adicionar o ultimo valor no display
+    setLastNumberToDisplay(){
+        //Executa o método getLastItem passando false como parâmento para retornar o ultimo valor number e salva numa variável
+        //Verifica se lastNumber é diferente de number, se sim atribui o valor 0
+        //Adiciona a variável lastNumber no display
+        let lastNumber = this.getLastItem(false)
+        if(!lastNumber){
+            lastNumber = 0;
         }
         this.displayCalc = lastNumber;
     }
@@ -164,7 +214,7 @@ class CalcController {
                 this.addOperation('.');
                 break;
             case 'igual':
-            
+                this.calc();
                 break;
             case '00':
             case '0':
