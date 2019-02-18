@@ -175,14 +175,24 @@ class CalcController {
                 //Converte o newValue para número e substitui a ultima posição
                 //Atualizando display
                 let newValue = this.getLastOperation().toString() + value.toString();
-                this.setLastOperation(parseFloat(newValue));
+                this.setLastOperation(newValue);
                 this.setLastNumberToDisplay();
             }
         }
     }
 
+    //Método para adiconar o ponto
     addDot(){
+        //Guarda o retorno de getLastOperation na variável lasOperation
+        //Verifica se o tipo de lastOperation é uma string e se já tem um ponto
+        //Se sim, para a execução da operação com um return
+        //Verifica se é o inicio de uma operação para adicionar o 0. ao clicar em ponto
+        //Se não, converte o retorno de lastOperation em string e concatena o ponto
+        //Atualiza o valor no display
         let lastOperation = this.getLastOperation();
+        if(typeof lastOperation === 'string' && lastOperation.split('').indexOf('.') > -1){
+            return
+        }
         if(this.isOperator(lastOperation) || !lastOperation){
             this.pushOperation('0.');
         } else {
