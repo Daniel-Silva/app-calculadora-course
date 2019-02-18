@@ -45,13 +45,48 @@ class CalcController {
         this._operation.pop()
     }
 
-    addOperation(value){
-        this._operation.push(value);
-        console.log(this._operation)
+    //Método que retorna a ultima operação
+    getLastOperation(){
+        //Retorna a ultima operação
+        return this._operation[this._operation.length - 1]
     }
 
+    //Método que valida se é uma das operações do array
+    isOperator(value){
+        return (['+', '-', '*', '/', '%'].indexOf(value) > -1);
+          
+    }
+
+    //Método que substitui o ultimo value da operação (+, -, *, /, %) por um novo
+    setLastOperation(value) {
+        this._operation[this._operation.length - 1] = value
+    }
+    //Método que adiciona um item ao array _operation
+    addOperation(value){
+        //Verifica se o ultimo indice da operação é um número
+        if(isNaN(this.getLastOperation())){
+            //Verifica se o value é uma das operações válidas
+            if(this.isOperator(value)){
+                //Substitui a ultima operação por value
+                this.setLastOperation(value);
+            } else if(isNaN(value)){
+                console.log(value);
+            } else {
+                //Adiciona value ao array _operation
+                this._operation.push(value);
+            }
+        } else {
+            //Converte o retorno de getLastOperation e value (caso número) para string e concatena
+            let newValue = this.getLastOperation().toString() + value.toString();
+            //Converte o newValue para número e substitui a ultima posição
+            this.setLastOperation(parseInt(newValue));
+        }
+        console.log(this._operation);
+    }
+
+    //Método que imprime Error no display
     setError(){
-        this.displayCalc = 'Error'
+        this.displayCalc = 'Error';
     }
 
     //Método para verificar a função de cada button
@@ -64,19 +99,25 @@ class CalcController {
                 this.clearEntry();
                 break;
             case 'soma':
-
+                this.addOperation('+');
                 break;
             case 'subtracao':
-
+                this.addOperation('-');
                 break;
             case 'divisao':
-
+                this.addOperation('/');
                 break;
             case 'multiplicacao':
-
+                this.addOperation('*');
+                break;
+            case 'porcento':
+                this.addOperation('%'); 
+                break;
+            case 'ponto':
+                this.addOperation('.');
                 break;
             case 'igual':
-
+            
                 break;
             case '00':
             case '0':
@@ -154,7 +195,7 @@ class CalcController {
 
     //Método que atribui um novo valor ao _displayCalc
     set displayCalc(value) {
-        this._displayCalcEl.innerHTML = valor;
+        this._displayCalcEl.innerHTML = value;
     }
 
     //Método que retorna o valor de _currentDate
