@@ -56,11 +56,50 @@ class CalcController {
         return (['+', '-', '*', '/', '%'].indexOf(value) > -1);
           
     }
+    
+    //Método para realizar o push da operação
+    pushOperation(value){
+        //Realiza o push de value no array _operation
+        //Verifica se o tamanho do array é 3 e executa o cálculo
+        this._operation.push(value);
+        if(this._operation.length > 3) {
+            this.calc();
+        }
+    }
+
+    //Método para realizar o primeiro cálculo
+    calc(){
+        //Remove o ultimo value do array
+        //Join() separa o array e retorna uma string
+        //Eval() retorna o cálculo da string
+        //Atualiza o display com o resultado do cálculo
+        let last = this._operation.pop();
+        let result = eval(this._operation.join(''));
+        this._operation = [result, last];
+        this.setLastNumberToDisplay();
+    }
 
     //Método que substitui o ultimo value da operação (+, -, *, /, %) por um novo
     setLastOperation(value) {
         this._operation[this._operation.length - 1] = value
     }
+
+    //Método para adicionar o ultimo valor no display
+    setLastNumberToDisplay(){
+        //Percorre o array _operation até a ultima posição
+        //Adiciona a ultima posição encontrada na variável lastNumber
+        //Para a execução do for()
+        //Adiciona a variável lastNumber no display
+        let lastNumber;
+        for(let i = this._operation.length - 1; i >= 0; i--){
+            if(!this.isOperator(this._operation[i])){
+                lastNumber = this._operation[i];
+                break
+            }
+        }
+        this.displayCalc = lastNumber;
+    }
+
     //Método que adiciona um item ao array _operation
     addOperation(value){
         //Verifica se o ultimo indice da operação é um número
@@ -73,15 +112,23 @@ class CalcController {
                 console.log(value);
             } else {
                 //Adiciona value ao array _operation
-                this._operation.push(value);
+                //Atualiza o display
+                this.pushOperation(value);
+                this.setLastNumberToDisplay();
             }
         } else {
-            //Converte o retorno de getLastOperation e value (caso número) para string e concatena
-            let newValue = this.getLastOperation().toString() + value.toString();
-            //Converte o newValue para número e substitui a ultima posição
-            this.setLastOperation(parseInt(newValue));
+            //Verifica o value e adiciona a operação
+            if(this.isOperator(value)){
+                this.pushOperation(value);
+            } else {
+                //Converte o retorno de getLastOperation e value (caso número) para string e concatena
+                //Converte o newValue para número e substitui a ultima posição
+                //Atualizando display
+                let newValue = this.getLastOperation().toString() + value.toString();
+                this.setLastOperation(parseInt(newValue));
+                this.setLastNumberToDisplay();
+            }
         }
-        console.log(this._operation);
     }
 
     //Método que imprime Error no display
