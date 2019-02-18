@@ -41,6 +41,8 @@ class CalcController {
     //Método que limpa o display caso o button clicado seja AC
     clearAll(value){
         this._operation = [];
+        this._lastNumber = '';
+        this._lastOperator = '';
         this.setLastNumberToDisplay();
     }
 
@@ -158,8 +160,6 @@ class CalcController {
             if(this.isOperator(value)){
                 //Substitui a ultima operação por value
                 this.setLastOperation(value);
-            } else if(isNaN(value)){
-                console.log(value);
             } else {
                 //Adiciona value ao array _operation
                 //Atualiza o display
@@ -175,10 +175,20 @@ class CalcController {
                 //Converte o newValue para número e substitui a ultima posição
                 //Atualizando display
                 let newValue = this.getLastOperation().toString() + value.toString();
-                this.setLastOperation(parseInt(newValue));
+                this.setLastOperation(parseFloat(newValue));
                 this.setLastNumberToDisplay();
             }
         }
+    }
+
+    addDot(){
+        let lastOperation = this.getLastOperation();
+        if(this.isOperator(lastOperation) || !lastOperation){
+            this.pushOperation('0.');
+        } else {
+            this.setLastOperation(lastOperation.toString() + '.');
+        }
+        this.setLastNumberToDisplay();
     }
 
     //Método que imprime Error no display
@@ -211,7 +221,7 @@ class CalcController {
                 this.addOperation('%'); 
                 break;
             case 'ponto':
-                this.addOperation('.');
+                this.addDot();
                 break;
             case 'igual':
                 this.calc();
